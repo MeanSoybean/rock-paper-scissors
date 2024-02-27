@@ -10,6 +10,10 @@ function getComputerChoice() {
     return choice;
 }
 
+function getPlayerChoice() {
+    return prompt('Please input "rock", "paper", or "scissors":');
+}
+
 let choice_to_code = {
     "rock": 0,
     "paper": 1,
@@ -30,7 +34,38 @@ let end_round_message = [
 function playRound(computerSelection, playerSelection) {
     const computerCode = choice_to_code[computerSelection];
     const playerCode = choice_to_code[playerSelection];
-    const message = end_round_message[computerCode][playerCode];
     const result = computer_player_result[computerCode][playerCode];
-    return result, message; 
+    const message = end_round_message[computerCode][playerCode];
+    return {"result": result, "message": message}; 
 }
+
+function playGame() {
+    let playerScore = 0;
+    let computerScore = 0;
+    const rounds = 5;
+    for (round = 0; round < rounds; round++) {
+        let computerSelection = getComputerChoice();
+        
+        let playerSelection = getPlayerChoice();
+        while (!(playerSelection in choice_to_code)) {
+            playerSelection = getPlayerChoice();
+        }
+
+        const roundPlayedObject = playRound(computerSelection, playerSelection);
+        result = roundPlayedObject.result;
+        message = roundPlayedObject.message;
+        if (result == "You win!") {
+            playerScore++;
+        } else if (result == "You lose!") {
+            computerScore++;
+        }
+        outputMessage = `${result} ${message}`;
+        console.log(outputMessage);
+    }
+    console.log(`Player score: ${playerScore} - Computer score: ${computerScore}`)
+    if (playerScore > computerScore) console.log("You win!");
+    else if (playerScore < computerScore) console.log("You lose!");
+    else console.log("Draw!");
+}
+
+playGame()
