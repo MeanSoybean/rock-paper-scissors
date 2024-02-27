@@ -22,8 +22,15 @@ let computer_player_result = [
     ["You win!","You lose!","Draw!"]
 ]
 
+let end_round_message = [
+    ["Rock ties with rock!","Paper beats rock!","Rock beats scissors!"],
+    ["Paper beats rock!","Paper ties with paper!","Scissors beats paper!"],
+    ["Rock beats scissors!","Scissors beats paper!","Scissors tie with scissors!"],
+]
 function playRound(computerSelection, playerSelection) {
-    let computerCode = choice_to_code[computerSelection];
-    let playerCode = choice_to_code[playerSelection];
-    return computer_player_result[computerCode][playerCode]; 
+    const computerCode = choice_to_code[computerSelection];
+    const playerCode = choice_to_code[playerSelection];
+    const message = end_round_message[computerCode][playerCode];
+    const result = computer_player_result[computerCode][playerCode];
+    return result, message; 
 }
