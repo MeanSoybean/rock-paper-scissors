@@ -10,9 +10,20 @@ function getComputerChoice() {
     return choice;
 }
 
-let isContinuing = false;
-while (isContinuing) {
-    alert(getComputerChoice());
-    isContinuing = confirm("Continue getting choice?");
+let choice_to_code = {
+    "rock": 0,
+    "paper": 1,
+    "scissors": 2,
+}
 
+let computer_player_result = [
+    ["Draw!","You win!","You lose!"],
+    ["You lose!","Draw!","You win!"],
+    ["You win!","You lose!","Draw!"]
+]
+
+function playRound(computerSelection, playerSelection) {
+    let computerCode = choice_to_code[computerSelection];
+    let playerCode = choice_to_code[playerSelection];
+    return computer_player_result[computerCode][playerCode]; 
 }
