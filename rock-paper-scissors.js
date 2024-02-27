@@ -4,10 +4,9 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled); // The maximum is exclusive and the minimum is inclusive
 }
 
-let choices = ["rock", "paper", "scissors"];
 function getComputerChoice() {
-    let choice = choices[getRandomInt(0, choices.length)];
-    return choice;
+    const choices = choice_to_code.keys();
+    return choices[getRandomInt(0, choices.length)];
 }
 
 function getPlayerChoice() {
