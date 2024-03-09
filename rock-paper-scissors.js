@@ -45,26 +45,7 @@ function playRound(computerSelection, playerSelection) {
 function playGame() {
   let playerScore = 0;
   let computerScore = 0;
-  const rounds = 5;
-  for (round = 0; round < rounds; round++) {
-    let computerSelection = getComputerChoice();
 
-    let playerSelection = getPlayerChoice();
-    while (!(playerSelection in choice_to_code)) {
-      playerSelection = getPlayerChoice();
-    }
-
-    const roundPlayedObject = playRound(computerSelection, playerSelection);
-    result = roundPlayedObject.result;
-    message = roundPlayedObject.message;
-    if (result == "You win!") {
-      playerScore++;
-    } else if (result == "You lose!") {
-      computerScore++;
-    }
-    outputMessage = `${result} ${message}`;
-    console.log(outputMessage);
-  }
   console.log(
     `Player score: ${playerScore} - Computer score: ${computerScore}`
   );
