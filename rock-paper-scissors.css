@@ -1,0 +1,6 @@
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: "Gill Sans", sans-serif;
+  align-items: center;
+}
